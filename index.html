@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#087f8c">
+  <meta name="description" content="SmartCare Clinic appointment and token management demo.">
+  <title>SmartCare Clinic | Appointments & Tokens</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="topline"><span>●</span> Your health, our priority <span class="topline-right">Clinic hours: Mon–Sat · 9:00 AM–6:00 PM</span></div>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="SmartCare home"><span class="brand-mark">✚</span><span>SmartCare<span class="brand-sub">CLINIC & CARE</span></span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
+    <nav id="mainNav">
+      <a href="#home">Home</a><a href="#about">About</a><a href="#doctors">Doctors</a><a href="#booking">Book Appointment</a><a href="#token">Check Token</a><a href="#contact">Contact</a>
+    </nav>
+    <div class="header-actions"><button class="btn btn-light" id="loginOpen">Login</button><button class="btn btn-primary" id="registerOpen">Get Started <span>↗</span></button></div>
+  </header>
+
+  <main>
+    <section class="hero section-wrap" id="home">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="pulse"></span> SMARTER HEALTHCARE STARTS HERE</div>
+        <h1>Good health begins with <em>better care.</em></h1>
+        <p class="hero-lead">Book your doctor appointment in minutes. Get your token instantly and follow your queue from anywhere.</p>
+        <div class="hero-actions"><a class="btn btn-primary btn-large" href="#booking">Book an appointment <span>→</span></a><a class="text-link" href="#token">Track my token <span>↗</span></a></div>
+        <div class="hero-trust"><div class="avatar-stack"><span>RK</span><span>PA</span><span>SK</span><b>+</b></div><div><strong>Care that puts you first</strong><small>Simple booking · Less waiting</small></div></div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div>
+        <div class="doctor-illustration"><div class="doctor-head">☺</div><div class="doctor-coat"><span>✚</span></div></div>
+        <div class="floating-card card-appointment"><span class="float-icon">✓</span><div><b>Appointment booked</b><small>Your token is ready</small></div></div>
+        <div class="floating-card card-token"><small>NOW SERVING</small><strong id="heroServing">--</strong><span>Live queue status</span></div>
+        <div class="hero-caption">PERSON-CENTRED CARE, EVERY DAY</div>
+      </div>
+    </section>
+
+    <section class="quick-stats section-wrap">
+      <div><strong>4<span>+</span></strong><small>Specialist doctors</small></div><div><strong>6<span> days</span></strong><small>Care throughout the week</small></div><div><strong>24<span>/7</span></strong><small>Online token checking</small></div><div><strong>1<span> place</span></strong><small>Your care journey made easy</small></div>
+    </section>
+
+    <section class="section-wrap section-pad" id="about">
+      <div class="section-heading"><div><div class="eyebrow">WHY SMARTCARE</div><h2>Healthcare that works <em>around you.</em></h2></div><p>Spend less time waiting and more time focusing on what matters. Manage your clinic visit with a few simple steps.</p></div>
+      <div class="feature-grid"><article class="feature-card"><span class="feature-icon">▣</span><h3>Easy appointments</h3><p>Choose your doctor, date and available time slot without visiting the clinic first.</p></article><article class="feature-card"><span class="feature-icon green">№</span><h3>Instant token number</h3><p>Receive a unique token for your selected doctor and appointment date.</p></article><article class="feature-card"><span class="feature-icon lavender">◷</span><h3>Queue updates</h3><p>Check the current token, patients ahead and your appointment status.</p></article></div>
+    </section>
+
+    <section class="doctors-section" id="doctors"><div class="section-wrap section-pad"><div class="section-heading"><div><div class="eyebrow">MEET OUR TEAM</div><h2>Doctors who care. <em>Experts who listen.</em></h2></div><p>Find the right specialist for your healthcare needs.</p></div><div class="doctor-grid" id="doctorGrid"></div></div></section>
+
+    <section class="section-wrap section-pad booking-layout" id="booking">
+      <div class="booking-intro"><div class="eyebrow">BOOK YOUR VISIT</div><h2>Your appointment, <em>made simple.</em></h2><p>Complete the form and we'll generate your appointment ID and token number.</p><div class="booking-note"><span>✦</span><div><b>Quick and convenient</b><small>Keep your appointment ID safe to check your token later.</small></div></div></div>
+      <form class="panel booking-form" id="bookingForm">
+        <div class="form-title"><div><h3>Book an appointment</h3><p>Fields marked * are required</p></div><span class="form-step">01 / 01</span></div>
+        <div class="form-grid">
+          <label>Full name *<input name="patientName" required minlength="2" placeholder="Enter patient name"></label>
+          <label>Age *<input name="age" type="number" min="1" max="110" required placeholder="Age"></label>
+          <label>Phone number *<input name="phone" type="tel" pattern="[0-9+() -]{8,16}" required placeholder="Your contact number"></label>
+          <label>Email address<input name="email" type="email" placeholder="name@example.com"></label>
+          <label class="span-2">Select doctor *<select name="doctorId" id="doctorSelect" required><option value="">Choose a doctor</option></select></label>
+          <label>Department *<select name="department" id="departmentSelect" required><option value="">Select department</option><option>General Medicine</option><option>Dermatology</option><option>Cardiology</option><option>Pediatrics</option></select></label>
+          <label>Appointment date *<input name="date" id="appointmentDate" type="date" required></label>
+          <label class="span-2">Preferred time slot *<select name="time" required><option value="">Choose a time</option><option>09:00 AM</option><option>09:30 AM</option><option>10:00 AM</option><option>10:30 AM</option><option>11:00 AM</option><option>11:30 AM</option><option>12:00 PM</option><option>02:00 PM</option><option>02:30 PM</option><option>03:00 PM</option><option>03:30 PM</option><option>04:00 PM</option><option>04:30 PM</option></select></label>
+          <label class="span-2">Reason for visit (optional)<textarea name="reason" rows="2" placeholder="Briefly tell us how we can help"></textarea></label>
+        </div>
+        <button class="btn btn-primary btn-full btn-large" type="submit">Confirm appointment <span>→</span></button>
+        <p class="form-foot">By booking, you confirm that the details provided are correct.</p>
+      </form>
+    </section>
+
+    <section class="token-section" id="token"><div class="section-wrap token-layout"><div><div class="eyebrow light-eyebrow">YOUR VISIT, IN CONTROL</div><h2>Skip the guesswork.<br><em>Know your queue.</em></h2><p>Enter your appointment ID or token number to see the latest status in this demo.</p></div><form id="tokenForm" class="token-search"><label for="tokenLookup">Appointment ID or token number</label><div class="token-input-row"><input id="tokenLookup" required placeholder="e.g. SC1001 or 001"><button class="btn btn-dark" type="submit">Check status →</button></div><small>Token queues are separate for each doctor and date.</small></form></div><div class="section-wrap" id="tokenResult" aria-live="polite"></div></section>
+
+    <section class="section-wrap section-pad" id="contact"><div class="contact-card"><div><div class="eyebrow">WE'RE HERE TO HELP</div><h2>Questions? <em>Talk to us.</em></h2><p>For this project demo, use the sample clinic contact details below.</p></div><div class="contact-details"><p>⌖ &nbsp; SmartCare Clinic, Main Road, India</p><p>☎ &nbsp; +91 98765 43210</p><p>✉ &nbsp; hello@smartcare.example</p></div></div></section>
+  </main>
+
+  <footer><div class="section-wrap footer-inner"><a class="brand footer-brand" href="#home"><span class="brand-mark">✚</span><span>SmartCare<span class="brand-sub">CLINIC & CARE</span></span></a><p>Care made simple. © <span id="year"></span> SmartCare Clinic.</p><span class="demo-label">STUDENT PROJECT DEMO</span></div></footer>
+
+  <div class="modal-backdrop" id="modalBackdrop" hidden><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="modal-close" id="modalClose" aria-label="Close">×</button><div id="modalContent"></div></section></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
